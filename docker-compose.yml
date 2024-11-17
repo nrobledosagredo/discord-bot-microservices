@@ -1,0 +1,65 @@
+version: '3.6'
+
+services:
+    discord_listener:
+        build:
+            context: discord_listener/
+        container_name: discord_listener
+        networks:
+          - network
+        environment:
+          - RABBITMQ_HOST=rabbitmq
+        restart: 'always'
+
+    youtube:
+        build:
+            context: youtube/
+        container_name: youtube
+        networks:
+          - network
+        environment:
+          - RABBITMQ_HOST=rabbitmq
+        restart: 'always'
+        
+    birthday_database:
+        image: mariadb:10.1.48
+        ports:
+          - "23306:3306"
+        container_name: birthday_database
+        networks:
+          - network
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+        command:
+          - "--character-set-server=utf8mb4"
+          - "--collation-server=utf8mb4_unicode_ci"
+        volumes:
+          - ./birthday_database:/var/lib/mysql
+        restart: 'always'
+
+    birthday_manager:
+        build:
+          context: ./birthday_manager
+          args:
+            - DATABASE_IP=$DATABASE_IP 
+        container_name: birthday_manager
+        environment:
+          - RABBITMQ_HOST=rabbitmq
+        networks: 
+          - network
+        #network_mode: "default"
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+          # The standard AMQP protocol port
+          - '5672:5672'
+          # HTTP management UI
+          - '15672:15672'
+        networks: 
+          - network
+        container_name: rabbitmq
+        restart: 'always'
+
+networks:
+  network: {}

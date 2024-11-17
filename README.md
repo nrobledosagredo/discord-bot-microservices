@@ -7,7 +7,7 @@
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 
-Este proyecto es un bot de Discord diseñado para demostrar el uso de una arquitectura distribuida basada en **microservicios**. Incluye funcionalidades como gestión de cumpleaños, búsqueda de videos en YouTube y comunicación entre servicios mediante RabbitMQ.
+Bot de Discord diseñado a modo de aprendizaje para demostrar el uso de una arquitectura distribuida basada en **microservicios**. Incluye funcionalidades como gestión de cumpleaños, búsqueda de videos en YouTube y comunicación entre servicios mediante RabbitMQ.
 
 ## Funcionalidades
 

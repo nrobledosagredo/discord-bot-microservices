@@ -1,4 +1,4 @@
-# Bot de Discord con microservicios y arquitectura distribuida
+# Discord bot with microservices and distributed architecture
 
 ![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -7,54 +7,46 @@
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 
-Bot de Discord diseñado a modo de aprendizaje para demostrar el uso de una arquitectura distribuida basada en **microservicios**. Incluye funcionalidades como gestión de cumpleaños, búsqueda de videos en YouTube y comunicación entre servicios mediante RabbitMQ.
+A Discord bot designed as a learning project to demonstrate the use of a distributed **microservices** architecture. It includes functionalities like birthday management, YouTube video search, and communication between services via RabbitMQ.
 
-## Funcionalidades
+## Features
 
-- **Gestión de cumpleaños**:
-  - Consulta y registro de fechas de cumpleaños.
-  - Comandos interactivos en Discord.
+- **Birthday management**:
+  - Query and register birthday dates.
+  - Interactive commands in Discord.
   
-- **Búsqueda en YouTube**:
-  - Encuentra videos y envía enlaces directamente en Discord.
+- **YouTube search**:
+  - Find videos and send links directly in Discord.
 
-- **Arquitectura distribuida**:
-  - Servicios desacoplados que se comunican mediante RabbitMQ.
-  - Contenerización con Docker para facilitar el despliegue.
+- **Distributed architecture**:
+  - Decoupled services communicating through RabbitMQ.
+  - Containerization with Docker for easy deployment.
 
-## Componentes
+## Requirements
 
-1. **Discord Listener**: Gestiona comandos y mensajes en Discord.
-2. **Birthday Manager**: Administra la base de datos de cumpleaños.
-3. **YouTube Service**: Procesa búsquedas de videos.
-4. **RabbitMQ**: Provee la comunicación entre servicios.
-5. **Base de datos MariaDB**: Almacena información de los cumpleaños.
-
-## Requisitos
-
-- **Docker** y **Docker Compose**.
-- Variables de entorno configuradas en un archivo `.env`:
+- **Docker** and **Docker Compose**.
+- Environment variables configured in a `.env` file:
    ```env
-   DISCORD_TOKEN=<tu-token-de-discord>
-   DISCORD_GUILD=<nombre-de-tu-servidor>
+   DISCORD_TOKEN=<your-discord-token>
+   DISCORD_GUILD=<your-guild-name>
    RABBITMQ_HOST=rabbitmq
    DATABASE_IP=birthday_database
    ```
 
-## Ejecución
+## How to run
 
-Para desplegar el proyecto, usa el siguiente comando:
+To deploy the project, use the following command:
 
 ```bash
 docker-compose up --build
 ```
 
-Esto levantará los contenedores necesarios, incluyendo el bot, los servicios y RabbitMQ.
+This will start the necessary containers, including the bot, services, and RabbitMQ.
 
-## Comandos principales
+## Main commands
 
-| Comando                | Descripción                                           |
-|------------------------|-------------------------------------------------------|
-| `!birthday <nombre>`   | Consulta la fecha de cumpleaños de un miembro.        |
-| `!add-birthday <datos>`| Registra el cumpleaños de un miembro.                 |
-| `!search <palabras>`   | Busca un video en YouTube y envía el enlace.          |
+| Command               | Description                                          |
+|-----------------------|------------------------------------------------------|
+| `!birthday <name>`    | Query the birthday of a member.                     |
+| `!add-birthday <data>`| Register a member's birthday.                       |
+| `!search <keywords>`  | Search for a YouTube video and send the link.       |

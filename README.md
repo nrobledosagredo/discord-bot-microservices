@@ -5,48 +5,43 @@
 ![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 
-A Discord bot designed as a learning project to demonstrate the use of a distributed **microservices** architecture. It includes functionalities like birthday management, YouTube video search, and communication between services via RabbitMQ.
+## Overview
+
+A Discord bot developed as a demonstration of a distributed microservices architecture. It features birthday management, YouTube video search, and service communication via RabbitMQ.
 
 ## Features
 
-- **Birthday management**:
-  - Query and register birthday dates.
-  - Interactive commands in Discord.
-  
-- **YouTube search**:
-  - Find videos and send links directly in Discord.
+- **Birthday management**: Query and register birthday dates via interactive Discord commands.
+- **YouTube search**: Find and share YouTube video links directly within Discord.
+- **Distributed architecture**: Decoupled services containerized with Docker, communicating via RabbitMQ.
 
-- **Distributed architecture**:
-  - Decoupled services communicating through RabbitMQ.
-  - Containerization with Docker for easy deployment.
+## Prerequisites
 
-## Requirements
+* Docker
+* Docker Compose
+* Environment variables configured in a `.env` file:
+    ```env
+    DISCORD_TOKEN=<your-discord-token>
+    DISCORD_GUILD=<your-guild-name>
+    RABBITMQ_HOST=rabbitmq
+    DATABASE_IP=birthday_database
+    ```
 
-- **Docker** and **Docker Compose**.
-- Environment variables configured in a `.env` file:
-   ```env
-   DISCORD_TOKEN=<your-discord-token>
-   DISCORD_GUILD=<your-guild-name>
-   RABBITMQ_HOST=rabbitmq
-   DATABASE_IP=birthday_database
-   ```
+## Setup
 
-## How to run
+1. Create a `.env` file in the project's root directory with the required environment variables as shown above.
 
-To deploy the project, use the following command:
+2. Run the following command to build and start the containers:
 
-```bash
-docker-compose up --build
-```
-
-This will start the necessary containers, including the bot, services, and RabbitMQ.
+    ```bash
+    docker-compose up --build
+    ```
 
 ## Main commands
 
-| Command               | Description                                          |
-|-----------------------|------------------------------------------------------|
-| `!birthday <name>`    | Query the birthday of a member.                     |
-| `!add-birthday <data>`| Register a member's birthday.                       |
-| `!search <keywords>`  | Search for a YouTube video and send the link.       |
+| Command               | Description                                       |
+|-----------------------|---------------------------------------------------|
+| `!birthday <name>`    | Query the birthday of a member.                   |
+| `!add-birthday <data>`| Register a member's birthday.                     |
+| `!search <keywords>`  | Search for a YouTube video and send the link.     |
